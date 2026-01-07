@@ -180,7 +180,7 @@ void HectorModel::completeInit( const string& aScenarioName ) {
     mHectorEmissionsMsg["NOx"]           = D_EMISSIONS_NOX;
     mHectorEmissionsMsg["OC"]            = D_EMISSIONS_OC;
     mHectorEmissionsMsg["SF6"]           = D_EMISSIONS_SF6;
-    mHectorEmissionsMsg["SO2tot"]        = D_EMISSIONS_SO2; 
+    mHectorEmissionsMsg["SO2tot"]        = D_EMISSIONS_SO2;
 
     // Emissions modeled by GCAM but not implemented in Hector v 3.2.0
     // H2, HFC152a, HFC236fa, HFC365mfc, HFC43, PM
@@ -226,7 +226,8 @@ void HectorModel::completeInit( const string& aScenarioName ) {
     mHectorRFTseriesMsg["HFC32"]     = D_RF_HFC32;
     mHectorRFTseriesMsg["HFC4310"]   = D_RF_HFC4310;
     mHectorRFTseriesMsg["SF6"]       = D_RF_SF6;
-    mHectorRFTseriesMsg["vol"]       = D_RF_VOL;
+    // Solar Radiation Modification, Stratosferic Aerosol Injection
+    mHectorEmissionsMsg["SO2_STR"]   = D_RF_VOL;
 
     
     // Set up the storage for GCAM emissions for each of the gasses we

@@ -353,6 +353,8 @@ void World::setEmissions( int period ) {
     EmissionsSummer nh3Summer( "NH3" );
     EmissionsSummer nh3agrSummer( "NH3_AGR" );
     EmissionsSummer nh3awbSummer( "NH3_AWB" );
+    // Solar Radiation Modification, Stratosferic Aerosol Injection
+    EmissionsSummer so2strSummer( "SO2_STR" );
 
     
     // Group the EmissionsSummer together for improved performance.
@@ -403,13 +405,15 @@ void World::setEmissions( int period ) {
     allSummer.addEmissionsSummer( &nh3Summer );
     allSummer.addEmissionsSummer( &nh3agrSummer );
     allSummer.addEmissionsSummer( &nh3awbSummer );
+    // Solar Radiation Modification, Stratosferic Aerosol Injection
+    allSummer.addEmissionsSummer( &so2strSummer );
 
 
-   const double TG_TO_PG = 1000;
-   const double N_TO_N2O = 1.571132; 
-   const double N_TO_NO2 = 3.2857;
-   const double S_TO_SO2 = 2.0; 
-   const double HFC_CA_TO_FA = ( 950.0 / 640.0 );
+    const double TG_TO_PG = 1000;
+    const double N_TO_N2O = 1.571132; 
+    const double N_TO_NO2 = 3.2857;
+    const double S_TO_SO2 = 2.0; 
+    const double HFC_CA_TO_FA = ( 950.0 / 640.0 );
     const double HFC23_TO_143 = ( 14800.0 / 4470.0 );
     const double HFC236_TO_143 = ( 9810.0 / 4470.0 );
     const double HFC32_TO_245 = ( 675.0 / 1030.0 );
@@ -625,6 +629,12 @@ void World::setEmissions( int period ) {
                                     nh3Summer.getEmissions( period ) +
                                     nh3awbSummer.getEmissions( period ) +
                                     nh3agrSummer.getEmissions( period ) );
+    }
+
+    // Solar Radiation Modification, Stratosferic Aerosol Injection
+    if( so2strSummer.areEmissionsSet( period ) ){
+        mClimateModel->setEmissions( "SO2_STR", period,
+                                     so2strSummer.getEmissions( period ) );
     }
 }
     
