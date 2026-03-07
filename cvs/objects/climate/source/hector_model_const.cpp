@@ -73,9 +73,7 @@ namespace {
     const double GG_TO_TG  = 1.0e-3;
     const double S_TO_SO2  = 2.0;       // 2g SO2 has 1g of S
     // Solar Radiation Modification, Stratosferic Aerosol Injection
-    // Conversion already calculated in world.cpp
-    const double TG_TO_WM2 = 1; // To be modified by actual value
-    //const double TG_TO_WM2 = -0.28; // To be modified by actual value
+    const double TG_TO_WM2 = -0.28; // To be modified by actual value
 
     // default values
     const int def_end_year = 2100;
@@ -185,7 +183,6 @@ void HectorModel::completeInit( const string& aScenarioName ) {
     mHectorEmissionsMsg["OC"]            = D_EMISSIONS_OC;
     mHectorEmissionsMsg["SF6"]           = D_EMISSIONS_SF6;
     mHectorEmissionsMsg["SO2tot"]        = D_EMISSIONS_SO2;
-    // Allow Hector to read SAI volcaninc forcing from GCAM
     // Solar Radiation Modification, Stratosferic Aerosol Injection
     mHectorEmissionsMsg["SO2_STR"]       = D_VOLCANIC_SO2;
 
@@ -273,7 +270,6 @@ void HectorModel::completeInit( const string& aScenarioName ) {
     mUnitConvFac["BC"]      = GG_TO_TG;            // GCAM produces BC/OC in Tg but converts
     mUnitConvFac["OC"]      = GG_TO_TG;            // to Gg for MAGICC. Hector wants Tg.
     // Solar Radiation Modification, Stratosferic Aerosol Injection
-    // Conversion already calculated in world.cpp
     mUnitConvFac["SO2_STR"] = TG_TO_WM2;           // GCAM will produce emissions in Tg but Hector wants WM-2.
     
     // Already in correct units:

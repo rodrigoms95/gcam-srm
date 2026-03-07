@@ -46,9 +46,6 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-// Solar Radiation Modification, Stratosferic Aerosol Injection
-// Include std::log10() to calculate SAI radiative efficiency
-#include <cmath>
 
 #include "util/base/include/xml_helper.h"
 #include "containers/include/world.h"
@@ -357,7 +354,6 @@ void World::setEmissions( int period ) {
     EmissionsSummer nh3agrSummer( "NH3_AGR" );
     EmissionsSummer nh3awbSummer( "NH3_AWB" );
     // Solar Radiation Modification, Stratosferic Aerosol Injection
-    // Allow GCAM to read SAI emissions from technologies
     EmissionsSummer so2strSummer( "SO2_STR" );
 
     
@@ -410,7 +406,6 @@ void World::setEmissions( int period ) {
     allSummer.addEmissionsSummer( &nh3agrSummer );
     allSummer.addEmissionsSummer( &nh3awbSummer );
     // Solar Radiation Modification, Stratosferic Aerosol Injection
-    // Allow GCAM to read SAI emissions from technologies
     allSummer.addEmissionsSummer( &so2strSummer );
 
 
@@ -637,20 +632,9 @@ void World::setEmissions( int period ) {
     }
 
     // Solar Radiation Modification, Stratosferic Aerosol Injection
-    // Send SAI emissions from GCAM to Hector
-    // Apply saturation of radiative efficiency
-    // FE = -0.3 + 0.1 log(E)
-    // FE: Forcing efficiency [W/m^2/Tg]
-    // F = FE * E
-    // F: Radiative forcing [W/m^2]
-    // E: Stratospheric SO2 emissions [Tg/yr]
     if( so2strSummer.areEmissionsSet( period ) ){
-        double so2_str_rf = std::min( 0.0, std::max( -0.3, ( -0.3 + 0.1 * std::log10( std::max( 1.0, so2strSummer.getEmissions( period ) ) ) ) ) );
-        std::cout << std::endl << "SO2_STR emissions: " << so2strSummer.getEmissions( period ) << " Tg/yr" << std::endl;
-        std::cout << "Radiative efficiency: " << so2_str_rf << " W/m^2/Tg" << std::endl;
-        std::cout << "Radiative forcing: " << ( so2_str_rf * so2strSummer.getEmissions( period ) ) << " W/m^2" << std::endl;
-
-        mClimateModel->setEmissions( "SO2_STR", period, so2strSummer.getEmissions( period ) * so2_str_rf );
+        mClimateModel->setEmissions( "SO2_STR", period,
+                                     so2strSummer.getEmissions( period ) );
     }
 }
     

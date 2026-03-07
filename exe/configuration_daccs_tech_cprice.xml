@@ -5,7 +5,7 @@
 		<Value name="BatchFileName">batch_ag.xml</Value>
 		<Value name="policy-target-file">../input/policy/forcing_target_4p5.xml</Value>
 		<Value name="GHGInputFileName">../input/magicc/inputs/input_gases.emk</Value>
-		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/database_basexdb_Reference</Value>
+		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/database_basexdb_DACCS_tech_cprice</Value>
 		<Value write-output="1" append-scenario-name="0" name="restart">./restart/restart</Value>
 		<Value write-output="1" append-scenario-name="1" name="xmlDebugFileName">debug.xml</Value>
 		<Value write-output="1" append-scenario-name="0" name="climatFileName">gas.emk</Value>
@@ -109,10 +109,20 @@
         <Value name = "prune_ag">../input/gcamdata/xml/prune_empty_ag.xml</Value>
 
 		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
+
+		<!--Geoengineering-->
+		<Value name="geoengineering">../input/gcamdata/xml/dac_ssp2.xml</Value>
+		<!-- CCS -->
+		<Value name="ccs">../input/gcamdata/xml/ccs_supply_low.xml</Value>
+		<Value name="ccs">../input/gcamdata/xml/no_offshore_ccs.xml</Value>
+
+		<!--Carbon tax-->
+		<Value name = "carbon_tax">../input/srm/carbon_tax_25.xml</Value>
+		<Value name = "ghg_link">../input/srm/linked_ghg_policy_srm.xml</Value>
 		
 	</ScenarioComponents>
 	<Strings>
-		<Value name="scenarioName">Reference</Value>
+		<Value name="scenarioName">DACCS_tech_cprice</Value>
 		<Value name="debug-region">USA</Value>
 		<Value name="MAGICC-input-dir">../input/magicc/inputs</Value>
 		<Value name="MAGICC-output-dir">../output</Value>
