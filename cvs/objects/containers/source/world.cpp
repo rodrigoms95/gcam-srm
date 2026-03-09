@@ -644,8 +644,11 @@ void World::setEmissions( int period ) {
     // F = FE * E
     // F: Radiative forcing [W/m^2]
     // E: Stratospheric SO2 emissions [Tg/yr]
+    // GeoMIP6 min efficiency: 40 Tg/Yr to achieve 4 W/m^2 -> FE: 0.125
+    // GeoMIP6 mean efficiency: 30 Tg/Yr to achieve 4 W/m^2 -> FE: 0.113
+    // GeoMIP6 max efficiency: 20 Tg/Yr to achieve 4 W/m^2 -> FE: 0.077
     if( so2strSummer.areEmissionsSet( period ) ){
-        double so2_str_rf = std::min( 0.0, std::max( -0.3, ( -0.3 + 0.1 * std::log10( std::max( 1.0, so2strSummer.getEmissions( period ) ) ) ) ) );
+        double so2_str_rf = std::min( 0.0, std::max( -0.3, ( -0.3 + 0.113 * std::log10( std::max( 1.0, so2strSummer.getEmissions( period ) ) ) ) ) );
         std::cout << std::endl << "SO2_STR emissions: " << so2strSummer.getEmissions( period ) << " Tg/yr" << std::endl;
         std::cout << "Radiative efficiency: " << so2_str_rf << " W/m^2/Tg" << std::endl;
         std::cout << "Radiative forcing: " << ( so2_str_rf * so2strSummer.getEmissions( period ) ) << " W/m^2" << std::endl;

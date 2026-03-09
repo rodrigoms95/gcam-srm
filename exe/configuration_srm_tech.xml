@@ -111,7 +111,7 @@
 		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 
 		<!--Geoengineering-->
-		<Value name="geoengineering">../input/srm/srm_2.xml</Value>
+		<Value name="geoengineering">../input/srm/srm.xml</Value>
 		
 	</ScenarioComponents>
 	<Strings>
