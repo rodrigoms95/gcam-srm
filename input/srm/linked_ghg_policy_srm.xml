@@ -2,13 +2,49 @@
 <scenario>
    <world>
       <region name="USA">
+         <!--SO2 mean lifetime-->
+         <!--SOURCE: Sulfur deposition changes under sulfate geoengineering conditions: quasi-biennial oscillation effects on the transport and lifetime of stratospheric aerosols-->
+         <!--Visioni et al, 2018-->
+         <!--DOI:10.5194/acp-18-2787-2018-->
+         <!--SO2 mean lifetime: 13.5 +-3 months = 1.125 years-->
+
+         <!--SOURCE: Sensitivity of the radiative forcing by stratospheric sulfur geoengineering to the amount and strategy of the SO2 injection studied with the LMDZ-S3A model-->
+         <!--Kleinschmitt et al., 2018-->
+         <!--DOI: 10.5194/acp-18-2769-2018-->
+         <!--Mean forcing efficiency SO2: -0.3 + 0.1 log(E)-->
+
+         <!--GWP-->
+         <!--SOURCE: AR6 WG1 CH 7SM-->
+         <!--https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_Chapter07_SM.pdf-->
+         <!--GWP(SO2) = AGWP(SO2)/AGWP(CO2)-->
+         <!--AGWP = Integral F(t) dt-->
+         <!--E = 1 Tg, FE: -0.3 W/m^2/Tg, AWGP: -0.47899 [W/m^2/yr/Tg], GWP(CO2): -5351.9, GWP(C): -1459.6-->
+         <!--E = 5 Tg, FE: -0.23010 W/m^2/Tg, AWGP: -0.37550 [W/m^2/yr/Tg], GWP(CO2): -4195.5, GWP(C): -1144.2-->
+         <!--E = 10 Tg, FE: -0.2 W/m^2/Tg, AWGP: -0.33092 [W/m^2/yr/Tg], GWP(CO2): -3697.4, GWP(C): -1008.4-->
+         <!--E = 15 Tg, FE: -0.18239 W/m^2/Tg, AWGP: -0.30485 [W/m^2/yr/Tg], GWP(CO2): -3406.1, GWP(C): -928.94-->
+         <!--E = 20 Tg, FE: -0.16990 W/m^2/Tg, AWGP: -0.28635 [W/m^2/yr/Tg], GWP(CO2): -3199.4, GWP(C): -872.57-->
+         <!--E = 25 Tg, FE: -0.16021 W/m^2/Tg, AWGP: -0.27200 [W/m^2/yr/Tg], GWP(CO2): -3039.1, GWP(C): -828.84-->
+         <!--E = 30 Tg, FE: -0.15229 W/m^2/Tg, AWGP: -0.26027 [W/m^2/yr/Tg], GWP(CO2): -2908.1, GWP(C): -793.11-->
+
          <linked-ghg-policy name="SO2_STR">
-            <price-adjust fillout="1" year="1975">-0.00544959128</price-adjust>
-            <demand-adjust fillout="1" year="1975">-0.02</demand-adjust>
+            <price-adjust fillout="1" year="1975">-1459.6</price-adjust>
+            <!--price-adjust fillout="1" year="1975">-1144.2</price-adjust>
+            <price-adjust fillout="1" year="1975">-1008.4</price-adjust>
+            <price-adjust fillout="1" year="1975">-928.94</price-adjust>
+            <price-adjust fillout="1" year="1975">-872.57</price-adjust>
+            <price-adjust fillout="1" year="1975">-828.84</price-adjust>
+            <price-adjust fillout="1" year="1975">-793.11</price-adjust-->
+            <demand-adjust fillout="1" year="1975">-5351.9</demand-adjust>
+            <!--demand-adjust fillout="1" year="1975">-4195.5</demand-adjust>
+            <demand-adjust fillout="1" year="1975">-3697.4</demand-adjust>
+            <demand-adjust fillout="1" year="1975">-3406.1</demand-adjust>
+            <demand-adjust fillout="1" year="1975">-3199.4</demand-adjust>
+            <demand-adjust fillout="1" year="1975">-3039.1</demand-adjust>
+            <demand-adjust fillout="1" year="1975">-2908.1</demand-adjust-->
             <market>global</market>
             <linked-policy>GHG</linked-policy>
-            <price-unit>1990$/tC</price-unit>
-            <output-unit>MtC</output-unit>
+            <price-unit>1990$/TgSO2</price-unit>
+            <output-unit>TgSO2</output-unit>
          </linked-ghg-policy>
          <linked-ghg-policy name="CO2">
             <price-adjust fillout="1" year="1975">1</price-adjust>

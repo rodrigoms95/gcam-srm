@@ -638,12 +638,19 @@ void World::setEmissions( int period ) {
 
     // Solar Radiation Modification, Stratosferic Aerosol Injection
     // Send SAI emissions from GCAM to Hector
+    // SOURCE: Sensitivity of the radiative forcing by stratospheric sulfur geoengineering to the amount and strategy of the SO2 injection studied with the LMDZ-S3A model
+    // Kleinschmitt et al., 2018
+    // DOI: 10.5194/acp-18-2769-2018
     // Apply saturation of radiative efficiency
     // FE = -0.3 + 0.1 log(E)
+    // FE = K
     // FE: Forcing efficiency [W/m^2/Tg]
     // F = FE * E
     // F: Radiative forcing [W/m^2]
     // E: Stratospheric SO2 emissions [Tg/yr]
+    // SOURCE: Identifying the sources of uncertainty in climate model simulations of solar radiation modification with the G6sulfur and G6solar Geoengineering Model Intercomparison Project (GeoMIP) simulations
+    // Visioni et al., 2021
+    // DOI: 10.5194/acp-21-10039-2021
     // GeoMIP6 min efficiency: 40 Tg/Yr to achieve 4 W/m^2 -> FE: 0.125
     // GeoMIP6 mean efficiency: 30 Tg/Yr to achieve 4 W/m^2 -> FE: 0.113
     // GeoMIP6 max efficiency: 20 Tg/Yr to achieve 4 W/m^2 -> FE: 0.077
